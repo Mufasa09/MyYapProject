@@ -6,6 +6,12 @@
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Password Confirmation</string>
+    <string name="email">Email</string>
+    <string name="confirm_email">Email Confirmation</string>
+    <string name="create_new_account">Create New Account</string>
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>

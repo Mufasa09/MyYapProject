@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/signupEmail"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/email"
+        android:inputType="textEmailAddress"
+        android:autofillHints="emailAddress"
+        android:drawableStart="@drawable/baseline_person"
+        android:drawablePadding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.406"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.246" />
+
+    <EditText
+        android:id="@+id/confirmSignupEmail"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/confirm_email"
+        android:inputType="textEmailAddress"
+        android:autofillHints="emailAddress"
+        android:drawableStart="@drawable/baseline_person"
+        android:drawablePadding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.434"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.358" />
+
+    <EditText
+        android:id="@+id/signupPassword"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/password"
+        android:inputType="textPassword"
+        android:autofillHints="password"
+        android:drawableStart="@drawable/baseline_privacy"
+        android:drawablePadding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.437"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45" />
+
+    <EditText
+        android:id="@+id/confirmSignupPassword"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:text="@string/confirm_password"
+        android:inputType="textPassword"
+        android:autofillHints="password"
+        android:drawableStart="@drawable/baseline_privacy"
+        android:drawablePadding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.465"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.597" />
+
+    <Button
+        android:id="@+id/signupButton"
+        android:text="@string/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.824" />
+</androidx.constraintlayout.widget.ConstraintLayout>
