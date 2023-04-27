@@ -2,31 +2,27 @@ package com.example.myyapproject;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.IntentSenderRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.auth.api.identity.BeginSignInRequest;
-import com.google.android.gms.auth.api.identity.BeginSignInResult;
 import com.google.android.gms.auth.api.identity.Identity;
 import com.google.android.gms.auth.api.identity.SignInClient;
 import com.google.android.gms.auth.api.identity.SignInCredential;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -36,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     ImageView googleBtn;
     SignInClient oneTapClient;
     BeginSignInRequest signUpRequest;
+    String email;
 
 
     @Override
@@ -45,29 +42,23 @@ public class LoginActivity extends AppCompatActivity {
 
         createNewAccountBtn = findViewById(R.id.CreateNewAccount);
         loginBtn = findViewById(R.id.SignInButton);
-        TextView username = (TextView) findViewById(R.id.username);
-        TextView password = (TextView) findViewById(R.id.password);
+        TextView username =  findViewById(R.id.username);
+        TextView password =  findViewById(R.id.password);
         googleBtn = findViewById(R.id.googleImage);
 
 
-        createNewAccountBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
-                startActivity(intent);
-            }
+        createNewAccountBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(LoginActivity.this, SignUpActivity.class);
+            startActivity(intent);
         });
 
-        loginBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(username.getText().toString().equals("admin")&&
-                password.getText().toString().equals("admin"))
-                {
-                    Toast.makeText(LoginActivity.this,"Login success", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(LoginActivity.this,"Login failed", Toast.LENGTH_SHORT).show();
-                }
+        loginBtn.setOnClickListener(v -> {
+            if(username.getText().toString().equals("admin")&&
+            password.getText().toString().equals("admin"))
+            {
+                Toast.makeText(LoginActivity.this,"Login success", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(LoginActivity.this,"Login failed", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -87,50 +78,44 @@ public class LoginActivity extends AppCompatActivity {
 
         ActivityResultLauncher<IntentSenderRequest> activityResultLauncher =
                 registerForActivityResult(new ActivityResultContracts.StartIntentSenderForResult(),
-                        new ActivityResultCallback<ActivityResult>() {
-                    @Override
-                    public void onActivityResult(ActivityResult result) {
-                        if(result.getResultCode()== Activity.RESULT_OK)
-                        {
-                            try {
-                                SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(result.getData());
-                                String idToken = credential.getGoogleIdToken();
-                                if (idToken !=  null) {
-                                    String email = credential.getId();
-                                    Toast.makeText(getApplicationContext(),"Email: " +email, Toast.LENGTH_SHORT).show();
+                        result -> {
+                            if(result.getResultCode()== Activity.RESULT_OK)
+                            {
+                                try {
+                                    SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(result.getData());
+                                    String idToken = credential.getGoogleIdToken();
+                                    if (idToken !=  null) {
+                                        email = credential.getId();
+                                        //Attempting to pass email to the fragment
+                                        /*FragmentManager fragmentManager = getSupportFragmentManager();
+                                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                        Bundle bundle = new Bundle();
+                                        bundle.putString("email", email );
+                                        FirstFragment fragInfo = new FirstFragment();
+                                        fragInfo.setArguments(bundle);
+                                        fragmentTransaction.replace(R.id.nav_host_fragment_content_main,fragInfo ).commit();*/
 
+                                        Toast.makeText(getApplicationContext(),"Email: " +email, Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                        startActivity(intent);
+                                    }
+                                } catch (ApiException e) {
+                                    e.printStackTrace();
                                 }
-                            } catch (ApiException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                });
-
-        googleBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                oneTapClient.beginSignIn(signUpRequest)
-                        .addOnSuccessListener(LoginActivity.this,
-                                new OnSuccessListener<BeginSignInResult>() {
-                            @Override
-                            public void onSuccess(BeginSignInResult result) {
-                                //
-                                IntentSenderRequest intentSenderRequest = new IntentSenderRequest.Builder(result.getPendingIntent().
-                                        getIntentSender()).
-                                        build();
-                                activityResultLauncher.launch(intentSenderRequest);
-                            }
-                        })
-                        .addOnFailureListener(LoginActivity.this,
-                                new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Log.d("TAG", e.getLocalizedMessage());
                             }
                         });
-            }
-        });
+
+        googleBtn.setOnClickListener(v -> oneTapClient.beginSignIn(signUpRequest)
+                .addOnSuccessListener(LoginActivity.this,
+                        result -> {
+                            //
+                            IntentSenderRequest intentSenderRequest = new IntentSenderRequest.Builder(result.getPendingIntent().
+                                    getIntentSender()).
+                                    build();
+                            activityResultLauncher.launch(intentSenderRequest);
+                        })
+                .addOnFailureListener(LoginActivity.this,
+                        e -> Log.d("TAG", e.getLocalizedMessage())));
         //endregion
     }
 
