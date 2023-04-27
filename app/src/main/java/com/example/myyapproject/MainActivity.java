@@ -17,6 +17,7 @@ import com.example.myyapproject.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,8 +30,6 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        setSupportActionBar(binding.toolbar);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
@@ -61,6 +60,11 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Toast.makeText(getApplicationContext(),"This is where to go towards settings", Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        else if(id == R.id.action_logout){
+            Toast.makeText(getApplicationContext(),"This is where to go towards logging out", Toast.LENGTH_SHORT).show();
             return true;
         }
 
