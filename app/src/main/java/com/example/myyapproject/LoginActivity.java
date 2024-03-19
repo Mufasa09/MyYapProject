@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
             if(username.getText().toString().equals("admin")&&
             password.getText().toString().equals("admin"))
             {
-                Toast.makeText(LoginActivity.this,"Login success", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this,"Login is success", Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(LoginActivity.this,"Login failed", Toast.LENGTH_SHORT).show();
             }
