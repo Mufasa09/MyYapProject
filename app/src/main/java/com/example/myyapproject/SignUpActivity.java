@@ -31,7 +31,7 @@ public class SignUpActivity extends AppCompatActivity {
                 if(username.getText().toString().equals(confirmUsername.getText().toString()) &&
                 password.getText().toString().equals(confirmPassword.getText().toString()))
                 {
-                    Toast.makeText(SignUpActivity.this,"Login success", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpActivity.this,"Login is success", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                     startActivity(intent);
                 }else{
