@@ -57,6 +57,8 @@ public class LoginActivity extends AppCompatActivity {
             password.getText().toString().equals("admin"))
             {
                 Toast.makeText(LoginActivity.this,"Login success", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
             }else{
                 Toast.makeText(LoginActivity.this,"Login failed", Toast.LENGTH_SHORT).show();
             }
