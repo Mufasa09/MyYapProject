@@ -22,4 +22,5 @@
     <style name="Theme.MyYapProject.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.MyYapProject.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>
