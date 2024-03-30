@@ -22,8 +22,9 @@ public class LogoActivity extends AppCompatActivity {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
-                Intent intent = new Intent(LogoActivity.this, MainActivity.class);
-                startActivity(intent);            }
+                Intent intent = new Intent(LogoActivity.this, Login.class);
+                startActivity(intent);
+            }
         }, 1000);
     }
 }
