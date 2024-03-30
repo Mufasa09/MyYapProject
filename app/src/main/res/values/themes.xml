@@ -15,9 +15,15 @@
     </style>
 
     <style name="Theme.MyYapProject.NoActionBar">
-        <item name="windowActionBar">false</item>
+        <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in</item>
+        <item name="android:windowExitAnimation">@anim/slide_in</item>
+    </style>
+
 
     <style name="Theme.MyYapProject.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
