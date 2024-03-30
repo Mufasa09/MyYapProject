@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "996704986450",
+    "project_id": "yapp-d422f",
+    "storage_bucket": "yapp-d422f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:996704986450:android:0ab02971f53c9c9f1cc68b",
+        "android_client_info": {
+          "package_name": "com.example.myyapproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBOsKzagKD14f43nWlCXE05bzAVRqA4YME"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
