@@ -22,7 +22,7 @@
             android:title="About Us"/>
     </group>
     <item
-        android:title="">
+        android:title="Subset">
         <menu>
             <item
                 android:id="@+id/nav_logout"

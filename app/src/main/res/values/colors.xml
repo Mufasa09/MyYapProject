@@ -8,4 +8,6 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="lavender">#E6E6FA</color>
+    <color name="light_black">#1B1212</color>
+    <color name="gold">#FFD700</color>
 </resources>
