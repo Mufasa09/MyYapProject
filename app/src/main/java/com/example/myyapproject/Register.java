@@ -106,10 +106,15 @@ public class Register extends AppCompatActivity {
                                     // Sign in success, update UI with the signed-in user's information
                                     Toast.makeText(Register.this, "Account created.",
                                             Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(Register.this, Login.class);
+                                    startActivity(intent);
+                                    finish();
                                 } else {
                                     // If sign in fails, display a message to the user.
                                     Log.w(TAG, "signInWithCustomToken:failure", task.getException());
-                                    Toast.makeText(Register.this, "Authentication failed.",
+                                    Toast.makeText(Register.this,
+                                            "Authentication failed. Please enter valid email" +
+                                                    "and password (ex. pass@email.com pass123)",
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }

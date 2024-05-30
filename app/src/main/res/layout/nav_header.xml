@@ -5,24 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="176dp"
     android:gravity="bottom"
-    android:padding="16dp"
-    android:background="@drawable/headerbkg"
+    android:padding="10dp"
+    android:background="@color/black"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/aklogo"/>
+        android:id="@+id/KMDImage"
+        android:layout_width="72dp"
+        android:layout_height="80dp"
+        android:paddingRight="20dp"
+        android:src="@drawable/kmdlogo" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="KMD"
-        android:textColor="@color/black"
+        android:layout_below="@id/KMDImage"
+        android:text="Welcome"
+        android:id="@+id/WelcomeText"
+        android:textColor="@color/white"
         android:textStyle="bold"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="contact@androidknowledge.com"
         android:textColor="@color/white"
+        android:layout_below="@id/WelcomeText"
+        android:id="@+id/KMDEmail"
         android:textSize="14sp"
         android:layout_marginBottom="16dp"/>
 </LinearLayout>
