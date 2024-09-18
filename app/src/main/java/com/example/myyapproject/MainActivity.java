@@ -35,17 +35,14 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity{
     FirebaseAuth auth;
-    FirebaseUser user;
     ImageView menu;
     DrawerLayout drawerLayout;
     LinearLayout home, settings,logout;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         drawerLayout = findViewById(R.id.drawer_layout);
         menu = findViewById(R.id.menu);
@@ -54,8 +51,10 @@ public class MainActivity extends AppCompatActivity{
         logout = findViewById(R.id.logout);
         auth = FirebaseAuth.getInstance();
 
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
         TextView navUsername = findViewById(R.id.EmailText);
-//        navUsername.setText(user.getEmail());
+        navUsername.setText(user.getEmail());
 
         menu.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -34,13 +34,12 @@ import com.google.firebase.auth.FirebaseUser;
 public class Register extends AppCompatActivity {
 
     TextInputEditText editTextEmail, editTextPassword;
-    Button buttonReg;
+    Button buttonReg, registerBackBtn;
     FirebaseAuth mAuth;
     ProgressBar progressBar;
     TextView textView;
     SignInClient oneTapClient;
     BeginSignInRequest signUpRequest;
-    Button googleBtn;
     String email;
 
 
@@ -61,9 +60,7 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        googleBtn = findViewById(R.id.googleButton);
-
-
+        registerBackBtn = findViewById(R.id.registerback_button);
         mAuth = FirebaseAuth.getInstance();
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
@@ -122,61 +119,14 @@ public class Register extends AppCompatActivity {
             }
         });
 
-        //region Google Sign on
-
-
-        oneTapClient = Identity.getSignInClient(this);
-        signUpRequest = BeginSignInRequest.builder()
-                .setGoogleIdTokenRequestOptions(BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
-                        .setSupported(true)
-                        // Your server's client ID, not your Android client ID.
-                        .setServerClientId(getString(R.string.web_client_id))
-                        // Show all accounts on the device.
-                        .setFilterByAuthorizedAccounts(false)
-                        .build())
-                .build();
-
-        ActivityResultLauncher<IntentSenderRequest> activityResultLauncher =
-                registerForActivityResult(new ActivityResultContracts.StartIntentSenderForResult(),
-                        result -> {
-                            if(result.getResultCode()== Activity.RESULT_OK)
-                            {
-                                try {
-                                    SignInCredential credential = oneTapClient.getSignInCredentialFromIntent(result.getData());
-                                    String idToken = credential.getGoogleIdToken();
-                                    if (idToken !=  null) {
-                                        email = credential.getId();
-                                        //Attempting to pass email to the fragment
-                                        /*FragmentManager fragmentManager = getSupportFragmentManager();
-                                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                                        Bundle bundle = new Bundle();
-                                        bundle.putString("email", email );
-                                        FirstFragment fragInfo = new FirstFragment();
-                                        fragInfo.setArguments(bundle);
-                                        fragmentTransaction.replace(R.id.nav_host_fragment_content_main,fragInfo ).commit();*/
-
-                                        Toast.makeText(getApplicationContext(),"Email: " +email, Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(Register.this, MainActivity.class);
-                                        startActivity(intent);
-                                    }
-                                } catch (ApiException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        });
-
-        googleBtn.setOnClickListener(v -> oneTapClient.beginSignIn(signUpRequest)
-                .addOnSuccessListener(Register.this,
-                        result -> {
-                            //
-                            IntentSenderRequest intentSenderRequest = new IntentSenderRequest.Builder(result.getPendingIntent().
-                                    getIntentSender()).
-                                    build();
-                            activityResultLauncher.launch(intentSenderRequest);
-                        })
-                .addOnFailureListener(Register.this,
-                        e -> Log.d("TAG", e.getLocalizedMessage())));
-        //endregion
+        registerBackBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Register.this, Login.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
     }
 }

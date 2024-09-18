@@ -128,6 +128,8 @@ public class VideoMainActivity extends AppCompatActivity {
             }
         });
     }
+
+
     public static void openDrawer(DrawerLayout drawerLayout){
         drawerLayout.openDrawer(GravityCompat.START);
     }

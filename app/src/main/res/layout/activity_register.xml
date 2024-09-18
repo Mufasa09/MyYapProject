@@ -64,10 +64,11 @@
         android:text="@string/register"/>
 
     <Button
-        android:id="@+id/googleButton"
+        android:id="@+id/registerback_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Google Sign in"/>
+        android:textColor="@color/gold"
+        android:text="Back"/>
 
     <TextView
         android:id="@+id/loginNow"
