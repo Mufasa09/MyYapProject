@@ -15,7 +15,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="10sp"
+            android:textStyle="bold"
             android:layout_alignLeft="@+id/list_item_image"
             android:id="@+id/list_item_title"
             android:layout_marginStart="10sp"/>
+
+
 </RelativeLayout>

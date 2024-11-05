@@ -99,6 +99,8 @@ public class VideoMainActivity extends AppCompatActivity {
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(video.getUrl()));
                         intent.setDataAndType(Uri.parse(video.getUrl()), "video/*");
                         startActivity(intent);
+                        finish();
+                        closeDrawer(drawerLayout);
                     }
                 });
                 recyclerView.setAdapter(adapter);
