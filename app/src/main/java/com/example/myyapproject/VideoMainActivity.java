@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -96,10 +97,14 @@ public class VideoMainActivity extends AppCompatActivity {
                 adapter.setOnItemClickListener(new VideoAdapter.OnItemClickListener() {
                     @Override
                     public void onClick(Video video) {
-                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(video.getUrl()));
-                        intent.setDataAndType(Uri.parse(video.getUrl()), "video/*");
-                        startActivity(intent);
-                        finish();
+                        VideoView videoView = (VideoView) findViewById(R.id.video);
+                        videoView.setVideoURI(Uri.parse(video.getUrl()));
+                        videoView.start();
+                        //Opens a new screen with the video
+//                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(video.getUrl()));
+//                        intent.setDataAndType(Uri.parse(video.getUrl()), "video/*");
+//                        startActivity(intent);
+//                        finish();
                         closeDrawer(drawerLayout);
                     }
                 });

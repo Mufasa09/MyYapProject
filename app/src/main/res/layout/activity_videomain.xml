@@ -9,25 +9,39 @@
     tools:openDrawer="start"
     tools:context=".VideoMainActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#000000"
         android:orientation="vertical">
         <include
             layout="@layout/toolbar"/>
 
+        <VideoView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginLeft="100dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:id="@+id/video"
+            />
+
+        <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="420dp"
+                    android:background="#C0C0C0"
+                    android:layout_gravity="center">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
+
+                </FrameLayout>
     </LinearLayout>
-
-
-
-
-
 
     <RelativeLayout
         android:layout_width="300dp"

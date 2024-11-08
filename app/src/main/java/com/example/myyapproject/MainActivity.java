@@ -36,6 +36,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity{
     FirebaseAuth auth;
     ImageView menu;
+    TextView navUsername,usernameText;
     DrawerLayout drawerLayout;
     LinearLayout home, settings,logout;
 
@@ -49,12 +50,14 @@ public class MainActivity extends AppCompatActivity{
         home = findViewById(R.id.home);
         settings = findViewById(R.id.settings);
         logout = findViewById(R.id.logout);
+        navUsername = findViewById(R.id.EmailText);
+        usernameText = findViewById(R.id.username_text);
         auth = FirebaseAuth.getInstance();
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        TextView navUsername = findViewById(R.id.EmailText);
         navUsername.setText(user.getEmail());
+        usernameText.setText("\t\tWelcome \n" +user.getEmail());
 
         menu.setOnClickListener(new View.OnClickListener() {
             @Override

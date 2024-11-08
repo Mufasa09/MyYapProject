@@ -27,10 +27,11 @@
 <TextView
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Home"
+    android:id="@+id/username_text"
+    android:lines="2"
     android:layout_gravity="center"
     android:textColor="@color/black"
-    android:textSize="36sp"/>
+    android:textSize="18dp"/>
 </LinearLayout>
 
 <RelativeLayout
@@ -41,7 +42,5 @@
 
     <include
         layout="@layout/nav_drawer"/>
-
-
         </RelativeLayout>
 </androidx.drawerlayout.widget.DrawerLayout>
